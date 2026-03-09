@@ -1,0 +1,4 @@
+source registers
+
+axi $REG_CHIPIO_ADDR $1
+axi $REG_CHIPIO_DATA $2
