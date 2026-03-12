@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "abm_and_smem_inst_0_spi_ila_0",
-    "cell_name": "abm_and_smem/chip_spi_mux/spi_ila",
+    "cell_name": "chip_spi_mux/spi_ila",
     "component_reference": "xilinx.com:ip:system_ila:1.1",
     "ip_revision": "19",
     "gen_directory": ".",
@@ -4009,12 +4009,12 @@
     "boundary": {
       "ports": {
         "clk": [ { "direction": "in" } ],
-        "probe0": [ { "direction": "in", "size_left": "0", "size_right": "0" } ],
-        "probe1": [ { "direction": "in", "size_left": "0", "size_right": "0" } ],
-        "probe2": [ { "direction": "in", "size_left": "0", "size_right": "0" } ],
-        "probe3": [ { "direction": "in", "size_left": "0", "size_right": "0" } ],
-        "probe4": [ { "direction": "in", "size_left": "0", "size_right": "0" } ],
-        "probe5": [ { "direction": "in", "size_left": "0", "size_right": "0" } ]
+        "probe0": [ { "direction": "in", "size_left": "0", "size_right": "0", "driver_value": "0" } ],
+        "probe1": [ { "direction": "in", "size_left": "0", "size_right": "0", "driver_value": "0" } ],
+        "probe2": [ { "direction": "in", "size_left": "0", "size_right": "0", "driver_value": "0" } ],
+        "probe3": [ { "direction": "in", "size_left": "0", "size_right": "0", "driver_value": "0" } ],
+        "probe4": [ { "direction": "in", "size_left": "0", "size_right": "0", "driver_value": "0" } ],
+        "probe5": [ { "direction": "in", "size_left": "0", "size_right": "0", "driver_value": "0" } ]
       },
       "interfaces": {
         "CLK.clk": {
@@ -4022,13 +4022,13 @@
           "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
           "mode": "slave",
           "parameters": {
-            "FREQ_HZ": [ { "value": "250000000", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
+            "FREQ_HZ": [ { "value": "250000000", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
             "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_permission": "bd", "resolve_type": "generated", "format": "long", "is_static_object": false } ],
-            "PHASE": [ { "value": "0.0", "value_permission": "bd", "resolve_type": "generated", "format": "float", "is_static_object": false } ],
-            "CLK_DOMAIN": [ { "value": "abm_and_smem_clk", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
-            "ASSOCIATED_BUSIF": [ { "value": "SLOT_0_AXI", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "PHASE": [ { "value": "0.0", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "format": "float", "is_static_object": false } ],
+            "CLK_DOMAIN": [ { "value": "top_level_xdma_0_0_axi_aclk", "value_src": "default_prop", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "ASSOCIATED_BUSIF": [ { "value": "", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
             "ASSOCIATED_PORT": [ { "value": "", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
-            "ASSOCIATED_RESET": [ { "value": "resetn", "value_src": "user", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
+            "ASSOCIATED_RESET": [ { "value": "", "value_permission": "bd", "resolve_type": "generated", "is_static_object": false } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_static_object": false } ]
           },
           "port_maps": {

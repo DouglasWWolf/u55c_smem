@@ -1589,6 +1589,9 @@
                 "value": "AXI4LITE",
                 "value_src": "constant"
               },
+              "FREQ_HZ": {
+                "value": "250000000"
+              },
               "ID_WIDTH": {
                 "value": "0",
                 "value_src": "constant"
@@ -2074,6 +2077,9 @@
                     "value": "AXI4",
                     "value_src": "constant"
                   },
+                  "FREQ_HZ": {
+                    "value": "250000000"
+                  },
                   "ID_WIDTH": {
                     "value": "4",
                     "value_src": "constant"
@@ -2377,6 +2383,9 @@
                   "PROTOCOL": {
                     "value": "AXI4",
                     "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "250000000"
                   },
                   "ID_WIDTH": {
                     "value": "4",
@@ -2729,6 +2738,9 @@
                     "value": "AXI4",
                     "value_src": "constant"
                   },
+                  "FREQ_HZ": {
+                    "value": "250000000"
+                  },
                   "ID_WIDTH": {
                     "value": "4",
                     "value_src": "constant"
@@ -3032,6 +3044,9 @@
                   "PROTOCOL": {
                     "value": "AXI4",
                     "value_src": "constant"
+                  },
+                  "FREQ_HZ": {
+                    "value": "250000000"
                   },
                   "ID_WIDTH": {
                     "value": "4",
@@ -4712,6 +4727,9 @@
                     "value": "AXI4",
                     "value_src": "constant"
                   },
+                  "FREQ_HZ": {
+                    "value": "250000000"
+                  },
                   "ID_WIDTH": {
                     "value": "4",
                     "value_src": "constant"
@@ -5263,6 +5281,9 @@
           },
           "free_clk": {
             "direction": "O"
+          },
+          "hsi_clk": {
+            "direction": "I"
           }
         },
         "components": {
@@ -5278,6 +5299,24 @@
               "boundary_crc": "0x0"
             },
             "ports": {
+              "hsi_clk": {
+                "type": "clk",
+                "direction": "I",
+                "parameters": {
+                  "FREQ_HZ": {
+                    "value": "80000000",
+                    "value_src": "ip_prop"
+                  },
+                  "PHASE": {
+                    "value": "0.0",
+                    "value_src": "ip_prop"
+                  },
+                  "CLK_DOMAIN": {
+                    "value": "abm_and_smem_hs_clock_0_hs_clock",
+                    "value_src": "default_prop"
+                  }
+                }
+              },
               "clk": {
                 "type": "clk",
                 "direction": "I",
@@ -5587,6 +5626,12 @@
               "chip_spi/spi_mosi",
               "spi_mosi",
               "spi_ila/probe2"
+            ]
+          },
+          "hsi_clk_1": {
+            "ports": [
+              "hsi_clk",
+              "chip_spi/hsi_clk"
             ]
           },
           "resetn_1": {
@@ -7875,7 +7920,8 @@
       "smem_writer_hsi_clk": {
         "ports": [
           "smem_writer/hsi_clk",
-          "simulated_chip/hsi_clk"
+          "simulated_chip/hsi_clk",
+          "chip_spi_mux/hsi_clk"
         ]
       },
       "smem_writer_hsi_clk_freq_out": {

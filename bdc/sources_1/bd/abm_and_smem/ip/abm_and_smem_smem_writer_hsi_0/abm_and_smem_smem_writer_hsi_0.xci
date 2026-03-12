@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "abm_and_smem_smem_writer_hsi_0",
-    "cell_name": "smem_writer_hsi",
+    "cell_name": "smem_writer/smem_writer_hsi",
     "component_reference": "xilinx.com:module_ref:smem_writer_hsi:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../project.gen/sources_1/bd/abm_and_smem/ip/abm_and_smem_smem_writer_hsi_0",
