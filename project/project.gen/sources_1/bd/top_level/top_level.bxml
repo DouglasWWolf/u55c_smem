@@ -44,7 +44,7 @@
       </File>
     </FileCollection>
     <BlockContainerCollection>
-      <BlockContainer InstPath="/abm_and_smem" IsPR="false" State="Validated">
+      <BlockContainer InstPath="/abm_and_smem" IsPR="false" State="Stale">
         <ActiveVariantSynth FileName="bd/abm_and_smem_inst_0/abm_and_smem_inst_0.bd"/>
         <ActiveVariantSim FileName="bd/abm_and_smem_inst_0/abm_and_smem_inst_0.bd"/>
         <VariantsCollection>

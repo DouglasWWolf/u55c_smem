@@ -2,17 +2,13 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "abm_and_smem_chip_spi_0",
-    "cell_name": "chip_spi_mux/chip_spi",
+    "cell_name": "chip_spi",
     "component_reference": "xilinx.com:module_ref:chip_spi:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../project.gen/sources_1/bd/abm_and_smem/ip/abm_and_smem_chip_spi_0",
     "parameters": {
       "component_parameters": {
-        "FREQ_HZ": [ { "value": "250000000", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Component_Name": [ { "value": "abm_and_smem_chip_spi_0", "resolve_type": "user", "usage": "all" } ]
-      },
-      "model_parameters": {
-        "FREQ_HZ": [ { "value": "250000000", "resolve_type": "generated", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "virtexuplusHBM" } ],

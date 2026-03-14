@@ -2,7 +2,7 @@
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
     "xci_name": "abm_and_smem_chip_sim_0",
-    "cell_name": "simulated_chip/chip_sim",
+    "cell_name": "chip_sim",
     "component_reference": "xilinx.com:module_ref:chip_sim:1.0",
     "ip_revision": "1",
     "gen_directory": "../../../../../../project.gen/sources_1/bd/abm_and_smem/ip/abm_and_smem_chip_sim_0",

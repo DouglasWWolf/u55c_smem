@@ -23,7 +23,7 @@
       "chip_spi_mux": {
         "chip_spi": "",
         "chip_spi_mux": "",
-        "spi_ila": ""
+        "system_ila_0": ""
       },
       "simulated_chip": {
         "chip_sim": ""
@@ -1589,9 +1589,6 @@
                 "value": "AXI4LITE",
                 "value_src": "constant"
               },
-              "FREQ_HZ": {
-                "value": "250000000"
-              },
               "ID_WIDTH": {
                 "value": "0",
                 "value_src": "constant"
@@ -2077,9 +2074,6 @@
                     "value": "AXI4",
                     "value_src": "constant"
                   },
-                  "FREQ_HZ": {
-                    "value": "250000000"
-                  },
                   "ID_WIDTH": {
                     "value": "4",
                     "value_src": "constant"
@@ -2383,9 +2377,6 @@
                   "PROTOCOL": {
                     "value": "AXI4",
                     "value_src": "constant"
-                  },
-                  "FREQ_HZ": {
-                    "value": "250000000"
                   },
                   "ID_WIDTH": {
                     "value": "4",
@@ -2738,9 +2729,6 @@
                     "value": "AXI4",
                     "value_src": "constant"
                   },
-                  "FREQ_HZ": {
-                    "value": "250000000"
-                  },
                   "ID_WIDTH": {
                     "value": "4",
                     "value_src": "constant"
@@ -3044,9 +3032,6 @@
                   "PROTOCOL": {
                     "value": "AXI4",
                     "value_src": "constant"
-                  },
-                  "FREQ_HZ": {
-                    "value": "250000000"
                   },
                   "ID_WIDTH": {
                     "value": "4",
@@ -4727,9 +4712,6 @@
                     "value": "AXI4",
                     "value_src": "constant"
                   },
-                  "FREQ_HZ": {
-                    "value": "250000000"
-                  },
                   "ID_WIDTH": {
                     "value": "4",
                     "value_src": "constant"
@@ -5512,12 +5494,12 @@
               }
             }
           },
-          "spi_ila": {
+          "system_ila_0": {
             "vlnv": "xilinx.com:ip:system_ila:1.1",
             "ip_revision": "19",
-            "xci_name": "abm_and_smem_system_ila_0_1",
-            "xci_path": "ip/abm_and_smem_system_ila_0_1/abm_and_smem_system_ila_0_1.xci",
-            "inst_hier_path": "chip_spi_mux/spi_ila",
+            "xci_name": "abm_and_smem_system_ila_0_2",
+            "xci_path": "ip/abm_and_smem_system_ila_0_2/abm_and_smem_system_ila_0_2.xci",
+            "inst_hier_path": "chip_spi_mux/system_ila_0",
             "parameters": {
               "C_DATA_DEPTH": {
                 "value": "4096"
@@ -5526,7 +5508,7 @@
                 "value": "NATIVE"
               },
               "C_NUM_OF_PROBES": {
-                "value": "6"
+                "value": "5"
               }
             }
           }
@@ -5536,7 +5518,7 @@
             "ports": [
               "clk",
               "chip_spi_mux/clk",
-              "spi_ila/clk",
+              "system_ila_0/clk",
               "chip_spi/clk"
             ]
           },
@@ -5562,7 +5544,7 @@
             "ports": [
               "chip_spi/free_clk",
               "free_clk",
-              "spi_ila/probe0"
+              "system_ila_0/probe0"
             ]
           },
           "chip_spi_mux_busy_0": {
@@ -5611,21 +5593,21 @@
             "ports": [
               "chip_spi/spi_clk",
               "spi_clk",
-              "spi_ila/probe1"
+              "system_ila_0/probe1"
             ]
           },
           "chip_spi_spi_cs_n": {
             "ports": [
               "chip_spi/spi_cs_n",
               "spi_cs_n",
-              "spi_ila/probe5"
+              "system_ila_0/probe2"
             ]
           },
           "chip_spi_spi_mosi": {
             "ports": [
               "chip_spi/spi_mosi",
               "spi_mosi",
-              "spi_ila/probe2"
+              "system_ila_0/probe3"
             ]
           },
           "hsi_clk_1": {
@@ -5644,7 +5626,6 @@
           "sim_miso_1": {
             "ports": [
               "sim_miso",
-              "spi_ila/probe3",
               "chip_spi/sim_miso"
             ]
           },
@@ -5657,7 +5638,7 @@
           "spi_miso_1": {
             "ports": [
               "spi_miso",
-              "spi_ila/probe4",
+              "system_ila_0/probe4",
               "chip_spi/spi_miso"
             ]
           },
