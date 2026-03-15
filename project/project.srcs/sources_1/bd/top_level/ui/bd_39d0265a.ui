@@ -52,7 +52,7 @@ levelinfo -pg 1 0 130 430 770 1060 1370 1690 1840
 pagesize -pg 1 -db -bbox -sgen -140 0 2010 630
 ",
    "No Loops_ScaleFactor":"0.694781",
-   "No Loops_TopLeft":"-135,-107",
+   "No Loops_TopLeft":"-134,-85",
    "commentid":"",
    "guistr":"# # String gsaved with Nlview 7.0r4  2019-12-20 bk=1.5203 VDI=41 GEI=36 GUI=JA:10.0 TLS
 #  -string -flagsOSRD
@@ -71,6 +71,6 @@ pagesize -pg 1 -db -bbox -sgen -120 -290 950 270
 "
 }
 {
-   """"""""""""""""""""""da_axi4_cnt"""""""""""""""""""""":"2",
-   """"""""""""""""""""""da_bram_cntlr_cnt"""""""""""""""""""""":"2"
+   """"""""""""""""""""""""da_axi4_cnt"""""""""""""""""""""""":"2",
+   """"""""""""""""""""""""da_bram_cntlr_cnt"""""""""""""""""""""""":"2"
 }

@@ -148,36 +148,47 @@ localparam REG_CHIPIO_DATA    =  6;
 
 
 /*
+    @register Reading this register reads the sensor-chip address specified
+    @rdesc    by CHIPIO_ADDR, then adds 4 to CHIPIO_ADDR
+    @rdesc
+    @rdesc    Writing to this register writes to the sensor-chip address
+    @rdesc    specified by CHIPIO_ADDR then adds 4 to CHIPIO_ADDR
+             
+*/
+localparam REG_CHIPIO_DATA_INCR =  7;
+
+
+/*
     @register 0 = SPI input from chip comes from FPGA pin
     @rdesc    1 = SPI input from chip comes from simulator
     @rname    REG_CHIP_SIM_SELECT
 */
-localparam REG_SIM_SELECT     =  7;
+localparam REG_SIM_SELECT     =  8;
 
 /*
     @register Non-zero = SMEM is being updated
     @rdesc    Read-only    
 */
-localparam REG_SMEM_BUSY      =  8;
+localparam REG_SMEM_BUSY      =  9;
 
 
 /*
     @register The count of rows updated during the last SMEM update
     @rdesc    Read-only
 */
-localparam REG_SMEM_ROWS_UPD  =  9;
+localparam REG_SMEM_ROWS_UPD  = 10;
 
 /*
     @register The count of 32-bit words updated during the last SMEM update
     @rdesc    Read-only    
 */
-localparam REG_SMEM_WORDS_UPD = 10;
+localparam REG_SMEM_WORDS_UPD = 11;
 
 
 /*
     @register The count of ABMs received.  Write any value to clear
 */
-localparam REG_ABM_COUNT      = 11;
+localparam REG_ABM_COUNT      = 12;
 
 /*
     @register HSI clock: reference frequency in Hz.
@@ -269,15 +280,26 @@ localparam DECERR = 3;
 // This is the address that will used to read/write data to/from the chip
 reg[31:0] chipio_addr;
 
+// If either of these bits are 1, "chipio_addr" will be incremented
+reg[1:0] incr_chipio_addr;
+
 //==========================================================================
 // This state machine handles AXI4-Lite write requests
 //==========================================================================
 always @(posedge clk) begin
 
     // These strobes high for a single cycle at a time
-    load_wstrobe     <= 0;
-    hs_clk_configure <= 0;
-    chipio_write_stb <= 0;
+    load_wstrobe        <= 0;
+    hs_clk_configure    <= 0;
+    chipio_write_stb    <= 0;
+    incr_chipio_addr[0] <= 0;
+
+    // If we're told to increment chipio_addr, do so
+    case(incr_chipio_addr)
+        2'b01: chipio_addr <= chipio_addr + 4;
+        2'b10: chipio_addr <= chipio_addr + 4;
+        2'b11: chipio_addr <= chipio_addr + 8;
+    endcase
 
     // Keep track of how many ABMs arrives
     if (abm_ready_stb) abm_count <= abm_count + 1;
@@ -322,7 +344,7 @@ always @(posedge clk) begin
                             hs_clk_configure <= 1;
                         end
 
-                    REG_CHIPIO_DATA:
+                    REG_CHIPIO_DATA, REG_CHIPIO_DATA_INCR:
                         begin
                             chipio_waddr     <= chipio_addr; 
                             chipio_wdata     <= ashi_wdata;
@@ -344,7 +366,10 @@ always @(posedge clk) begin
             end
 
         // This waits for a write to the sensor-chip to complete
-        1: if (!chipio_write_busy) ashi_write_state <= 0;
+        1: if (!chipio_write_busy) begin
+            incr_chipio_addr[0] <= (ashi_windx == REG_CHIPIO_DATA_INCR);
+            ashi_write_state    <= 0;
+        end
 
     endcase
 end
@@ -358,7 +383,8 @@ end
 always @(posedge clk) begin
 
     // This strobes high for a single cycle at a time
-    chipio_read_stb <= 0;
+    chipio_read_stb     <= 0;
+    incr_chipio_addr[1] <= 0;
 
     // If we're in reset, initialize important registers
     if (resetn == 0) begin
@@ -396,7 +422,7 @@ always @(posedge clk) begin
 
                     // If we're reading from chip SMEM/registers, start
                     // the SPI transaction
-                    REG_CHIPIO_DATA:
+                    REG_CHIPIO_DATA, REG_CHIPIO_DATA_INCR:
                         begin
                             chipio_raddr    <= chipio_addr;
                             chipio_read_stb <= 1;
@@ -410,8 +436,9 @@ always @(posedge clk) begin
 
         // Wait for read-transaction with the sensor-chip to complete
         1:  if (!chipio_read_busy) begin
-                ashi_rdata      <= chipio_rdata;
-                ashi_read_state <= 0;
+                ashi_rdata          <= chipio_rdata;
+                incr_chipio_addr[1] <= (ashi_rindx == REG_CHIPIO_DATA_INCR);
+                ashi_read_state     <= 0;
             end
     endcase
 end

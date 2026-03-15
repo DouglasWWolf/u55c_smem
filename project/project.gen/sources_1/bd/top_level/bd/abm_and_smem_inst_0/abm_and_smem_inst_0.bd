@@ -1688,6 +1688,9 @@
                 "value": "AXI4LITE",
                 "value_src": "constant"
               },
+              "FREQ_HZ": {
+                "value": "250000000"
+              },
               "ID_WIDTH": {
                 "value": "0",
                 "value_src": "constant"
